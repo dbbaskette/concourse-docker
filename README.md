@@ -35,47 +35,35 @@ When running the Docker Compose `.yml` files, you will need to make sure you con
 
 Alternatively, these two Docker Run commands can be used to get `concourse-quickstart` up and running with 2 containers.  These command provide not only `concourse`, but also a database instance for it to use. 
 
-`docker network create concourse-net`
+```
+docker network create concourse-net
+```
 
-`docker run --name concourse-db \
-
+```
+docker run --name concourse-db \
   --net=concourse-net \
-
   -h concourse-postgres \
-
   -p 5432:5432 \
-
   -e POSTGRES_USER=<PG USER> \
-
-  -e POSTGRES_PASSWORD=<PG PASSWORD> \
-
+  -e POSTGRES_PASSWORD=<PG P ASSWORD> \
   -e POSTGRES_DB=atc \
+  -d postgres
+  ```
 
-  -d postgres`
-
-`docker run  --name concourse \
-
+```
+docker run  --name concourse \
   -h concourse \
-
   -p 8080:8080 \
-
   --privileged \
-
   --net=concourse-net \
-
   concourse/concourse quickstart \
-
   --basic-auth-username=<CONCOURSE USER> \
-
   --basic-auth-password=<CONCOURSE PASSWORD> \
-
   --postgres-user=<PG USER> \
-
   --postgres-password=<PG PASSWORD> \
-
   --postgres-host=concourse-db \
-  
-  --worker-garden-dns-server 8.8.8.8`
+  --worker-garden-dns-server 8.8.8.8
+  ```
 
 ## Caveats
 
