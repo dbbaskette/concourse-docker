@@ -33,7 +33,9 @@ When running the Docker Compose `.yml` files, you will need to make sure you con
 
 ## Docker Run
 
-Alternatively, these two Docker Run commands can be used to get `concourse-quickstart` up and running with 2 containers.  These command provide not only `concourse`, but also a database instance for it to use.
+Alternatively, these two Docker Run commands can be used to get `concourse-quickstart` up and running with 2 containers.  These command provide not only `concourse`, but also a database instance for it to use. 
+
+docker network create concourse-net
 
 docker run --name concourse-db \
   --net=concourse-net \
